@@ -26,7 +26,7 @@ const ImageDisplay = ({ blurLevel, saturationLevel, gameWon }) => {
                     onError={(e) => {
                         // Si hay error cargando la imagen, usar una por defecto
                         e.target.onerror = null;
-                        e.target.src = "https://drive.google.com/file/d/1fuG4LADPgYk3181JUQxWwJz4pK4LzrUo/view?usp=sharing";
+                        e.target.src = "https://share.google/sX381X8Q8tbWVC4LU";
                     }}
                 />
                 <div className="image-overlay">
