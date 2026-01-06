@@ -261,7 +261,7 @@ const VictoryAlert = ({ correctAnswer, attempts, cluesUsed, onClose }) => {
                     onClick={onClose}
                 >
                     <FaHeart style={{ marginRight: '10px' }} />
-                    Continuar la Aventura Amorosa
+                    Continuar la Aventura
                     <FaHeart style={{ marginLeft: '10px' }} />
                 </button>
             </div>
