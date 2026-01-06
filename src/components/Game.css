@@ -1,0 +1,343 @@
+.game-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #b79be9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ec4899, #8b5cf6, #ec4899);
+    z-index: 1;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(216, 180, 254, 0.9), rgba(249, 168, 212, 0.9));
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+.game-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.hearts-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.heart-icon {
+    font-size: 1.5rem;
+    color: #ec4899;
+    animation: pulse 2s infinite;
+
+}
+
+.heart-icon:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.heart-icon:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.game-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(139, 92, 246, 0.3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: black;
+    font-family: 'Brush Script MT', cursive;
+    text-align: center;
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #7c3aed;
+}
+
+.game-content {
+    flex: 1;
+}
+
+.main-game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.row-container {
+    display: flex;
+    gap: 30px;
+}
+
+.bottom-row {
+    margin-top: 20px;
+}
+
+.image-section {
+    flex: 1.2;
+}
+
+.clues-section {
+    flex: 0.8;
+}
+
+.guess-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.instructions {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(216, 180, 254, 0.3);
+    border-left: 5px solid #000000;
+    border-right: 5px solid #000000;
+    background: linear-gradient(to right, white, #fdf2ff);
+    height: 100%;
+}
+
+.instructions h3 {
+    color: #7c3aed;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.instructions-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.instructions ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.instructions li {
+    margin-bottom: 10px;
+    color: #6d28d9;
+    line-height: 1.5;
+    position: relative;
+}
+
+.instructions li::before {
+    content: '💘';
+    position: absolute;
+    left: -25px;
+}
+
+.message-box {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    border: 2px solid;
+}
+
+.message-box.success {
+    background-color: rgba(216, 180, 254, 0.2);
+    border-color: #8b5cf6;
+    color: #7c3aed;
+}
+
+.message-box.error {
+    background-color: rgba(249, 168, 212, 0.2);
+    border-color: #ec4899;
+    color: #be185d;
+}
+
+.message-box.info {
+    background-color: rgba(219, 234, 254, 0.3);
+    border-color: #93c5fd;
+    color: #1d4ed8;
+}
+
+.message-icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: #ec4899;
+}
+
+.message-text {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.romantic-quote {
+    background: linear-gradient(135deg, #f5d0fe, #fbcfe8);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f0abfc;
+}
+
+.quote-text {
+    font-style: italic;
+    color: #7c3aed;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.quote-author {
+    color: #a855f7;
+    font-weight: bold;
+    margin: 0;
+}
+
+.game-footer {
+    text-align: center;
+    margin-top: 100px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(216, 180, 254, 0.9), rgba(249, 168, 212, 0.9));
+    color: white;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.footer-hearts {
+    margin-bottom: 10px;
+}
+
+.footer-hearts span {
+    margin: 0 10px;
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+.footer-hearts span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.footer-hearts span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.footer-secret {
+    font-style: italic;
+    margin-top: 10px;
+    color: #f0abfc;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .row-container {
+        flex-direction: column;
+    }
+
+    .image-section,
+    .clues-section,
+    .guess-section,
+    .instructions-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    .game-title {
+        font-size: 2.3rem;
+    }
+
+    .game-subtitle {
+        font-size: 1rem;
+    }
+
+    .row-container {
+        gap: 20px;
+    }
+
+    .instructions {
+        padding: 20px;
+    }
+}

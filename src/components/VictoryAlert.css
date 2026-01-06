@@ -1,0 +1,544 @@
+/* Contenedor principal del alert */
+.victory-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(139, 92, 246, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+/* Alert principal */
+.victory-alert {
+    background: linear-gradient(135deg, #fdf2ff 0%, #fce7f3 100%);
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 550px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(139, 92, 246, 0.4);
+    border: 5px solid white;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+/* Efecto de borde superior brillante */
+.victory-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            #ec4899 0%,
+            #f472b6 25%,
+            #8b5cf6 50%,
+            #a78bfa 75%,
+            #ec4899 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+    z-index: 1002;
+}
+
+/* Efecto de brillo interno */
+.victory-alert::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(to bottom right,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0) 20%,
+            rgba(255, 255, 255, 0) 80%,
+            rgba(255, 255, 255, 0.1) 100%);
+    transform: rotate(45deg);
+    animation: shine 6s infinite linear;
+    z-index: 0;
+}
+
+/* Icono de victoria */
+.victory-alert-icon {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    color: #dd76ab;
+    
+    filter: drop-shadow(0 5px 15px rgba(236, 72, 153, 0.4));
+    z-index: 1002;
+    position: relative;
+    /* Eliminar cualquier fondo o borde que pudiera tener */
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+.victory-alert-icon svg {
+    /* Asegurar que el SVG herede los estilos */
+    width: 1em;
+    height: 1em;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Título */
+.victory-alert-title {
+    font-size: 2.8rem;
+    color: #7c3aed;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    font-family: 'Brush Script MT', cursive;
+    z-index: 1002;
+    position: relative;
+    background: linear-gradient(135deg, #570243, #a03d6f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+/* Mensaje */
+.victory-alert-message {
+    font-size: 1.3rem;
+    color: #6d28d9;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    z-index: 1002;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Respuesta correcta */
+.victory-alert-answer {
+    background: linear-gradient(135deg, white, #fdf4ff);
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7c3aed;
+    margin: 25px 0;
+    border: 2px solid #8b5cf6;
+    box-shadow: 0 10px 20px rgba(246, 92, 146, 0.611);
+    z-index: 1002;
+    position: relative;
+    animation: pulseAnswer 2s infinite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Estadísticas */
+.victory-alert-stats {
+    font-size: 1.1rem;
+    color: #8b5cf6;
+    margin-bottom: 30px;
+    font-style: italic;
+    z-index: 1002;
+    position: relative;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botón de cerrar */
+.victory-alert-button {
+    background: linear-gradient(135deg, #751444 0%, #cd5b94 100%);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.5);
+    z-index: 1002;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 250px;
+    margin-top: 10px;
+}
+
+.victory-alert-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(139, 92, 246, 0.7);
+    background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+}
+
+.victory-alert-button:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* ===== ANIMACIONES MEJORADAS ===== */
+
+/* Corazones que caen LENTAMENTE */
+.falling-heart {
+    position: fixed;
+    top: -50px;
+    font-size: 2rem;
+    color: #ec4899;
+    opacity: 0.9;
+    z-index: 1003;
+    pointer-events: none;
+    filter: drop-shadow(0 5px 10px rgba(236, 72, 153, 0.4));
+    animation-timing-function: ease-in;
+    will-change: transform, opacity;
+}
+
+/* Estrellitas que caen */
+.falling-star {
+    position: fixed;
+    top: -50px;
+    font-size: 1.8rem;
+    z-index: 1002;
+    pointer-events: none;
+    animation-timing-function: ease-in-out;
+    will-change: transform, opacity;
+}
+
+/* Confeti de diferentes formas */
+.confetti {
+    position: fixed;
+    top: -20px;
+    opacity: 0.9;
+    z-index: 1001;
+    pointer-events: none;
+    animation-timing-function: ease-in;
+    will-change: transform, opacity;
+}
+
+.confetti.circle {
+    border-radius: 50%;
+}
+
+.confetti.square {
+    border-radius: 3px;
+}
+
+.confetti.triangle {
+    width: 0;
+    height: 0;
+    background-color: transparent !important;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 14px solid;
+}
+
+/* Brillos (sparkles) estáticos */
+.sparkle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    animation-timing-function: ease-in-out;
+}
+
+/* Efecto de brillo pulsante alrededor del alert */
+.victory-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at center,
+            rgba(236, 72, 153, 0.2) 0%,
+            rgba(139, 92, 246, 0.1) 30%,
+            transparent 70%);
+    border-radius: 45px;
+    animation: pulseGlow 3s infinite alternate;
+    z-index: 0;
+}
+
+/* ===== ANIMACIONES KEYFRAMES ===== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.3) rotate(-10deg);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.05) rotate(2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0) scale(1);
+    }
+    33% { 
+        transform: translateY(-15px) rotate(5deg) scale(1.1);
+    }
+    66% { 
+        transform: translateY(-5px) rotate(-5deg) scale(1.05);
+    }
+}
+
+@keyframes glow {
+    from { 
+        filter: drop-shadow(0 5px 15px rgba(236, 72, 153, 0.4))
+                drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    }
+    to { 
+        filter: drop-shadow(0 5px 25px rgba(236, 72, 153, 0.8))
+                drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(45deg) translateX(-100%);
+    }
+
+    100% {
+        transform: rotate(45deg) translateX(100%);
+    }
+}
+
+@keyframes pulseAnswer {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+    }
+}
+
+/* Corazones caen LENTAMENTE con movimiento ondulante */
+@keyframes heartFall {
+    0% {
+        transform: translateY(-100px) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translateY(25vh) translateX(10px) rotate(90deg);
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(-10px) rotate(180deg);
+    }
+
+    75% {
+        transform: translateY(75vh) translateX(5px) rotate(270deg);
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Confeti cae con giro */
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Estrellas caen con efecto brillante */
+@keyframes starFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg) scale(1);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    }
+
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(1.2);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg) scale(0.8);
+        opacity: 0;
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+    }
+}
+
+/* Brillos que parpadean */
+@keyframes sparkleTwinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 10px white;
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .victory-alert {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    .victory-alert-title {
+        font-size: 2.2rem;
+    }
+
+    .victory-alert-message {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+
+    .victory-alert-answer {
+        font-size: 1.6rem;
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .victory-alert-button {
+        padding: 15px 25px;
+        font-size: 1.1rem;
+        min-width: 200px;
+    }
+
+    .victory-alert-icon {
+        font-size: 3.5rem;
+    }
+
+    /* Reducir cantidad de animaciones en móviles */
+    .falling-heart,
+    .falling-star,
+    .confetti {
+        display: none;
+    }
+
+    .falling-heart:nth-child(-n+10),
+    .falling-star:nth-child(-n+5),
+    .confetti:nth-child(-n+20) {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .victory-alert-title {
+        font-size: 1.8rem;
+    }
+
+    .victory-alert-answer {
+        font-size: 1.4rem;
+    }
+
+    .victory-alert-button {
+        min-width: 180px;
+        padding: 14px 20px;
+    }
+
+    .victory-alert-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Efecto de niebla mágica de fondo */
+.magic-fog {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 70%, rgba(248, 113, 113, 0.1) 0%, transparent 50%);
+    animation: fogFloat 30s infinite linear;
+    z-index: 0;
+}
+
+@keyframes fogFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-5%, -5%) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(5%, 5%) rotate(-1deg);
+    }
+
+    75% {
+        transform: translate(-5%, 5%) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
