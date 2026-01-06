@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/donde-fue-juego/static/css/main.b02688d0.css",
-    "main.js": "/donde-fue-juego/static/js/main.1d75e7d8.js",
+    "main.js": "/donde-fue-juego/static/js/main.29c1aa31.js",
     "static/js/453.0648a3cb.chunk.js": "/donde-fue-juego/static/js/453.0648a3cb.chunk.js",
     "index.html": "/donde-fue-juego/index.html",
     "main.b02688d0.css.map": "/donde-fue-juego/static/css/main.b02688d0.css.map",
-    "main.1d75e7d8.js.map": "/donde-fue-juego/static/js/main.1d75e7d8.js.map",
+    "main.29c1aa31.js.map": "/donde-fue-juego/static/js/main.29c1aa31.js.map",
     "453.0648a3cb.chunk.js.map": "/donde-fue-juego/static/js/453.0648a3cb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b02688d0.css",
-    "static/js/main.1d75e7d8.js"
+    "static/js/main.29c1aa31.js"
   ]
 }
