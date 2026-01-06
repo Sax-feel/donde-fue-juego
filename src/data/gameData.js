@@ -2,7 +2,7 @@ const gameData = {
     title: "¿Dónde fue?",
     correctAnswer: "Parque La Florida",
     maxAttempts: 5,
-    imageUrl: "/images/florida.jpeg", // Puedes reemplazar con tu imagen
+    imageUrl: "./images/florida.jpeg", // Puedes reemplazar con tu imagen
     clues: [
         "Es un lugar público",
         "Se encuentra en una zona urbana",
